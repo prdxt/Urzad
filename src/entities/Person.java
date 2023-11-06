@@ -11,9 +11,12 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-
-
-
-
-
+    @Override
+    public String toString() {
+        return " " +
+                "Imię='" + firstName + '\'' +
+                ", Nazwisko='" + lastName + '\'' +
+                ", Data urodzenia='" + birthDate + '\'' +
+                ' ';
+    }
 }
