@@ -1,22 +1,53 @@
 import entities.Person;
 import services.CivilRegistryManager;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         CivilRegistryManager registryManager = new CivilRegistryManager();
-        Person person1 = new Person("Jan", "Kowal", "1990-01-01");
-        Person person2 = new Person("Janina", "Kowal", "1992-05-05");
+        Scanner scanner = new Scanner(System.in);
 
-        registryManager.addPerson(person1);
-        registryManager.addPerson(person2);
+        while (true) {
+            System.out.println("Menu:");
+            System.out.println("1. Dodaj osobę");
+            System.out.println("2. Znajdź osobę");
+            System.out.println("3. Usuń osobę");
+            System.out.println("4. Wyjście");
+            System.out.print("Wybierz opcję: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
 
-        registryManager.findPerson(person1);
-        registryManager.findPerson(person2);
+            switch (choice) {
+                case 1:
+                    System.out.print("Podaj imię: ");
+                    String firstName = scanner.nextLine();
+                    System.out.print("Podaj nazwisko: ");
+                    String lastName = scanner.nextLine();
+                    System.out.print("Podaj datę urodzenia: ");
+                    String birthDate = scanner.nextLine();
+                    Person person = new Person(firstName, lastName, birthDate);
+                    registryManager.addPerson(person);
 
-        registryManager.deletePerson(person1);
-        registryManager.findPerson(person1);
+                    break;
+                case 2:
+                    System.out.print("Podaj imię osoby do wyszukania: ");
+//                    String searchFirstName = scanner.nextLine();
+                    break;
+                case 3:
+                    System.out.print("Podaj imię osoby do usunięcia: ");
+//                    String delete = scanner.nextLine();
+
+                    break;
+                case 4:
+                    System.out.println("Koniec programu.");
+                    return;
+                default:
+                    System.out.println("Nieprawidłowa opcja. Wybierz ponownie.");
+            }
+        }
     }
 }
